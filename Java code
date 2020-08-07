@@ -1,0 +1,80 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		
+		Scanner inp = new Scanner(System.in);
+		int t = inp.nextInt();
+		while(t-- > 0)
+		{
+		    String s = inp.next();
+		    Stack<Character> arr = new Stack<>();
+		    char[] ch = s.toCharArray();
+		    
+		  
+		  int f=0;
+		  for(int i=0;i<ch.length;i++)
+		  {
+		      if(ch[i]=='('||ch[i]=='{'||ch[i]=='[')
+		      {
+		        arr.add(ch[i]);
+		      
+		      }
+		      else
+		      {
+		          if(arr.size()==0)
+		          {
+		              System.out.println("not balanced");
+		              f=1;
+		              break;
+		          }
+		          char c = arr.peek();
+		          
+		          if(ch[i]==')')
+		          {
+		              if(c=='(')
+		              {
+		                arr.pop();
+		              
+		              }
+		              else
+		                break;
+		          }
+		          if(ch[i]=='}')
+		          {
+		              if(c=='{')
+		              {
+		                  arr.pop();
+		                  
+		              }
+		              else
+		                break;
+		          }
+		          if(ch[i]==']')
+		          {
+		              if(c=='[')
+		              {
+		                  arr.pop();
+		                  
+		              }
+		              else
+		                break;
+		          }
+		          
+		      }
+		      
+		  }
+		  if(f==0)
+		  {
+		  if(arr.size()==0)
+		    System.out.println("balanced");
+		  else
+		    System.out.println("not balanced");
+		  
+		    
+		  }
+		}
+	}
+}
